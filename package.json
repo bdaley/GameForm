@@ -1,0 +1,20 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "nuxt": "^3.2.3"
+  },
+  "dependencies": {
+    "firebase": "^9.17.2",
+    "nuxt-vuefire": "^0.1.6",
+    "sass": "^1.59.2",
+    "vuefire": "^3.1.0",
+    "vuetify": "^3.1.8"
+  }
+}
