@@ -24,50 +24,30 @@ function logOut(){
 
 <template>
     <v-app>
-        <v-app-bar flat style="background-color: #293C70;">
-            <v-container class="fill-height d-flex align-center">
+        <header style="background-color: #293C70;">
+               <v-container class="fill-height d-flex align-center justify-space-between" theme="dark">
                 
-                <NuxtLink to="/"><img src="/logo2.svg" alt="" height="40"></NuxtLink>  
+                    <NuxtLink to="/" style="display:block;"><img src="/logo2.svg" alt="" height="40" style="display:block;"></NuxtLink>  
 
-                <v-btn v-for="link in links" :key="link" variant="text">
-                    {{ link }}
-                </v-btn>
+                    <div>
+                        <v-btn  v-for="link in links" :key="link" variant="text" theme="dark">
+                            {{ link }}
+                        </v-btn>
 
-                <v-btn v-if="user" @click="logOut">Log Out</v-btn>
+                        <v-btn v-if="user" variant="plain" @click="logOut" theme="dark" color="secondary">Log Out</v-btn>
 
-                <v-spacer></v-spacer>
 
-                <!-- <v-responsive max-width="260">
-                    <v-text-field density="compact" hide-details variant="solo"></v-text-field>
-                </v-responsive> -->
-            </v-container>
-        </v-app-bar>
+                    </div>
+
+                </v-container>
+            sdfds
+        </header>
 
         <v-main class="bg-grey-lighten-3">
             <v-container>
                 <v-row>
-                    <v-col cols="2">
-                        <v-sheet rounded="lg">
-                            <v-list rounded="lg">
-                                <v-list-item v-for="n in 5" :key="n" link>
-                                    <v-list-item-title>
-                                        List Item {{ n }}
-                                    </v-list-item-title>
-                                </v-list-item>
-
-                                <v-divider class="my-2"></v-divider>
-
-                                <v-list-item link color="grey-lighten-4">
-                                    <v-list-item-title>
-                                        Refresh
-                                    </v-list-item-title>
-                                </v-list-item>
-                            </v-list>
-                        </v-sheet>
-                    </v-col>
-
                     <v-col>
-                        <v-sheet min-height="70vh" rounded="lg">
+                        <v-sheet min-height="50vh" rounded="lg" class="pa-5">
                             <slot></slot>
                         </v-sheet>
                     </v-col>
