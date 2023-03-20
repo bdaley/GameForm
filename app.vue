@@ -5,17 +5,15 @@ const user = useCurrentUser()
 
 onMounted(() => {
   watch(user, (user, prevUser) => {
-    console.log(user, prevUser)
+    console.log(user, prevUser,  route.query.redirect)
     if (prevUser && !user) {
       // user logged out
       console.log('user is logged out')
       router.push('/login')
-    } else if (user && typeof route.query.redirect === 'string') {
+    } else {
       // user logged in
       console.log('user logged in')
-      router.push(route.query.redirect)
-    }else{
-      console.log('other condition')
+      router.push('/')
     }
   })
 })

@@ -37,7 +37,7 @@ function login() {
 <template>
     <div>
             <h1>Login Page</h1>
-          <v-btn
+          <v-btn v-if="!user"
             color="primary"
             @click="login()"
           >
@@ -46,7 +46,7 @@ function login() {
 
 
 
-        <v-btn
+        <v-btn v-if="user"
               color="primary"
               to="/"
             >
