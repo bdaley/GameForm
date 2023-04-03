@@ -1,17 +1,26 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+    app: {
+        pageTransition: { name: 'page', mode: 'out-in' }
+    },
     ssr: false,
     modules: [
         'nuxt-vuefire'
     ],
     css: ['vuetify/lib/styles/main.sass'],
     build: {
-        transpile: ['vuetify'],
+        transpile: ['vuetify']
     },
     vite: {
         define: {
             'process.env.DEBUG': false,
         },
+    },
+    vue: {
+        compilerOptions: {
+            // Ignore native web components
+            isCustomElement: (tag) => ['gf-trivia'].includes(tag)
+        }
     },
     vuefire: {
         auth: true,

@@ -18,7 +18,9 @@ function logOut(){
     });
 }
 
-
+useHead({
+    title: 'GameForm - The Fun Formative Assessment'
+})
 
 </script>
 
