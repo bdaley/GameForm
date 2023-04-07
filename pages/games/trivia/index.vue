@@ -59,13 +59,15 @@ function log(){
     console.log('tab pressed')
 }
 
-useHead({
-    script: [
-        {
-            src: 'https://cdn.jsdelivr.net/gh/bdaley/gf-web-components/dist/assets/js/gf-trivia.min.js'
-        }
-    ]
-})
+// useHead({
+//     script: [
+//         {
+//             src: 'https://cdn.jsdelivr.net/gh/bdaley/gf-web-components/dist/assets/js/gf-trivia.min.js'
+//         }
+//     ]
+// })
+
+
 
 </script>
 
@@ -73,8 +75,7 @@ useHead({
 
 <template>
     <div>
-        <h1>New Trivia Question</h1>
-            <h3>Question Details</h3>
+        <h1 class=mb-4>New Trivia Question</h1>
             <form @submit.prevent="publish">
                 <v-text-field
                 name="question"
@@ -120,7 +121,15 @@ useHead({
                     >
                         Publish
                     </v-btn>
-
+                    <v-btn
+                    class="me-4 mt-4"
+                    type="button"
+                    color="sewcondary"
+                    :loading="loading"
+    
+                    @click="router.push(`/`)">
+                        Cancel
+                    </v-btn>
             </form>
 
 
