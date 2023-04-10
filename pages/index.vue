@@ -48,17 +48,9 @@ onMounted(async () => {
             </thead>
             <tbody>
                 <tr v-for="assessment in assessments">
-                    <td><nuxt-link :to="`/games/${assessment.type || 'trivia'}/${assessment.id}`">{{ assessment.question || 'name not set' }}</nuxt-link></td>
+                    <td><nuxt-link :to="`/view/${assessment.id}`">{{ assessment.question || 'name not set' }}</nuxt-link></td>
                     <td>{{ assessment.type || 'trivia' }}</td>
-                    <td class="d-flex ">
-                        <v-btn
-                        icon="mdi-delete"
-                        border
-                        height="40"
-                        variant="text"
-                        width="40"
-                        @click="deleteAssessment(assessment.id)"
-                        ></v-btn>
+                    <td class="d-flex align-center gap-2" style="gap:.5em">
                                                 
                         <v-btn
                         icon="mdi-pencil"
@@ -69,6 +61,29 @@ onMounted(async () => {
                         @click="editAssessment(assessment.id)"
 
                         ></v-btn>
+
+
+
+
+                            <v-btn
+                                icon="mdi-content-copy"
+                                border
+                                height="40"
+                                variant="text"
+                                width="40"
+                                @click="editAssessment(assessment.id)"
+                            ></v-btn>                        
+
+                        <v-btn
+                        icon="mdi-delete"
+                        border
+                        height="40"
+                        variant="text"
+                        width="40"
+                        @click="deleteAssessment(assessment.id)"
+                        ></v-btn>
+
+
                     </td>
                 </tr>
             </tbody>

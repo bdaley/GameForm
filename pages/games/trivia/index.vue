@@ -26,7 +26,7 @@ async function publish(){
     })
     console.log(docRef.id)
 
-    router.push(`/games/trivia/${docRef.id}`)
+    router.push(`/view/${docRef.id}`)
 
 
     // loading = false
