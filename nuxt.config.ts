@@ -1,7 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
     app: {
-        pageTransition: { name: 'page', mode: 'out-in' }
+        pageTransition: false,
+        layoutTransition: false
     },
     ssr: false,
     modules: [
@@ -32,5 +33,5 @@ export default defineNuxtConfig({
             measurementId: "G-JSJEG57E3C"
             // there could be other properties depending on the project
         },
-    },
+    }
 })

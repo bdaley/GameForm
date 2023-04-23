@@ -19,7 +19,14 @@ function logOut(){
 }
 
 useHead({
-    title: 'GameForm - The Fun Formative Assessment'
+    title: 'GameForm - The Fun Formative Assessment',
+    script: [
+        {
+            src: 'https://cdn.jsdelivr.net/gh/bdaley/gf-web-components/dist/assets/js/gf-trivia.js',
+            async: true,
+            id: 'gf-trivia-script'
+        }
+    ],
 })
 
 </script>
@@ -36,13 +43,13 @@ useHead({
                             {{ link }}
                         </v-btn>
 
+                        <v-btn v-if="user" variant="plain" @click="router.push('/')" theme="dark" color="secondary">Dashboard</v-btn>
                         <v-btn v-if="user" variant="plain" @click="logOut" theme="dark" color="secondary">Log Out</v-btn>
 
 
                     </div>
 
                 </v-container>
-            sdfds
         </header>
 
         <v-main class="bg-grey-lighten-3">
