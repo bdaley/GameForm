@@ -33,7 +33,7 @@ useHead({
 
 <template>
     <v-app>
-        <header style="background-color: #293C70;">
+        <header style="background-color: #293C70;" id="main-header">
                <v-container class="fill-height d-flex align-center justify-space-between" theme="dark">
                 
                     <NuxtLink to="/" style="display:block;"><img src="/logo2.svg" alt="" height="40" style="display:block;"></NuxtLink>  
@@ -52,11 +52,11 @@ useHead({
                 </v-container>
         </header>
 
-        <v-main class="bg-grey-lighten-3">
+        <v-main class="bg-grey-lighten-3" >
             <v-container>
                 <v-row>
                     <v-col>
-                        <v-sheet min-height="50vh" rounded="lg" class="pa-5">
+                        <v-sheet min-height="50vh" rounded="lg" class="pa-5" id="main-sheet">
                             <slot></slot>
                         </v-sheet>
                     </v-col>

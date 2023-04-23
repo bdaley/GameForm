@@ -83,15 +83,15 @@ useHead({
 
 <template>
     <v-row>
-        <v-col>
-            <h2 style="text-transform: capitalize">{{ assessment.type }}</h2>
+        <v-col  md="6">
+            <h2 style="text-transform: capitalize" class="d-none d-md-block">{{ assessment.type }}</h2>
             <template v-if="assessment.answers">
                 <gf-trivia :data-id="assessment.id" :answers="assessment.answers.join(',')" time="10">
                     {{ assessment.question }}
                 </gf-trivia>
             </template>
         </v-col>
-        <v-col>
+        <v-col class="d-none d-md-block"  md="6">
             <h2>Share this Assessment!</h2>
             <v-expansion-panels variant="accordion" flat>
                 <v-expansion-panel>
@@ -172,5 +172,25 @@ useHead({
 
 
 <style>
+
+@media(max-width:959px) {
+    #main-header {
+        display:none
+    }
+
+    gf-trivia {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #main-sheet {
+        min-height: 0px;
+        background-color: transparent;
+    }
+}
+
+
+
 
 </style>
