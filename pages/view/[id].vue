@@ -46,7 +46,7 @@ function updateHTML(){
 }
 
 function getOEmbedURL(){
-    return `https://us-central1-getgameform.cloudfunctions.net/api/oembed?format=json&id=${id}&url=${currentURL()}`
+    return `https://getgameform.com/api?format=json&id=${id}&url=${currentURL()}`
 }
 
 
