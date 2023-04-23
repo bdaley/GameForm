@@ -11,11 +11,8 @@ const db = getFirestore()
 const app = express();
 app.use(cors);
 
-app.get('/', (req, res) => {
-    res.send('nothing to see here. move along.')
-});
 
-app.get('/oembed', (req, res) => {
+app.get('*', (req, res) => {
 
     let { format, id, url } = req.query
 
@@ -36,6 +33,8 @@ app.get('/oembed', (req, res) => {
                 })                
             });
         });       
+    }else{
+        res.send({})
     }
 
 
