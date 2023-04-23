@@ -29,7 +29,9 @@ app.get('*', (req, res) => {
                     "version": "1.0",
                     "cache_age": 3600,
                     "provider_name": "GameForm",
-                    "provider_url": "https:\/\/getgameform.com\/"
+                    "provider_url": "https:\/\/getgameform.com\/",
+                    "width": 500,
+                    "height": 350
                 })                
             });
         });       
