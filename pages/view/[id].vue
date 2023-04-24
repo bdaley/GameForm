@@ -175,13 +175,19 @@ useHead({
 
 @media(max-width:959px) {
     #main-header {
-        display:none
+        display:none !important
     }
 
     gf-trivia {
         display: flex;
         align-items: center;
         justify-content: center;
+        background-color: transparent
+
+    }
+
+    gf-trivia > div {
+        background-color: transparent
     }
 
     #main-sheet {
