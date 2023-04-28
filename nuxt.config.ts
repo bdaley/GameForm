@@ -1,7 +1,8 @@
 import fs from 'node:fs'
 import path from 'node:path'
 
-const sa = path.resolve(__dirname, 'serviceAccountKey.json')
+// const sa = path.resolve(__dirname, 'serviceAccountKey.json')
+const sa = './.output/serviceAccountKey.json'
 
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
@@ -63,18 +64,14 @@ export default defineNuxtConfig({
     },
     //https://nuxt.com/docs/api/configuration/nuxt-config#hooks
     hooks: {
-        build:{
-            before(builder){
+        'nitro:build:public-assets': (builder) =>{
                 console.log('Writing SA')
                 const buff = Buffer.from(process.env.SERVICE_ACCOUNT, 'base64')
                 const decoded = buff.toString('utf-8')
 
-                // console.log(path.normalize('./serviceAccountKey.json'))
-
                 fs.writeFile(sa, decoded, (err, data)=>{
                     console.log(`File written: ${sa}`)
                 })
-            }
         }
     }
 })
