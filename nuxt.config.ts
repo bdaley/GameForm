@@ -1,3 +1,5 @@
+import fs from 'node:fs'
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
     app: {
@@ -53,6 +55,18 @@ export default defineNuxtConfig({
         },
         admin: {
             serviceAccount: './serviceAccountKey.json',
+        }
+    },
+    //https://nuxt.com/docs/api/configuration/nuxt-config#hooks
+    hooks: {
+        build:{
+            before(builder): void {
+                console.log('Writing SA')
+                const buff = Buffer.from(process.env.SERVICE_ACCOUNT, 'base64')
+                const decoded = buff.toString('utf-8')
+
+                fs.writeFileSync('./serviceAccountKey.json', decoded)                
+            }
         }
     }
 })

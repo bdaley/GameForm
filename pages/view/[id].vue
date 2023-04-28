@@ -180,7 +180,3 @@ if(process.server){
 <style>
 
 </style>
-<script>
-
-console.log("Where is this running?")
-</script>
