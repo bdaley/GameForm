@@ -4,7 +4,25 @@ export default defineNuxtConfig({
         pageTransition: false,
         layoutTransition: false
     },
-    ssr: false,
+    // ssr: false,
+    routeRules: {
+        '/login/**': { ssr: false },
+        '/view/**': {
+            cors: true,
+            ssr: true
+        }
+        // // Static page generated on-demand once
+        // '/articles/**': { static: true },
+        // // Set custom headers matching paths
+        // '/_nuxt/**': { headers: { 'cache-control': 's-maxage=0' } },
+        // // Render these routes with SPA
+        // '/admin/**': { ssr: false },
+        // // Add cors headers
+        // '/api/v1/**': { cors: true },
+        // // Add redirect headers
+        // '/old-page': { redirect: '/new-page' },
+        // '/old-page2': { redirect: { to: '/new-page', statusCode: 302 } }                                                                                                                                                                            
+    },
     modules: [
         'nuxt-vuefire'
     ],
@@ -27,11 +45,14 @@ export default defineNuxtConfig({
         auth: true,
         config: {
             apiKey: 'AIzaSyD8XNm6JuPn_JvB-mOkZYF1lntXl9JE0Ug',
-            authDomain: 'getgameform.com',
+            authDomain: 'getgameform.web.app',
             projectId: 'getgameform',
             appId: '1:631880925853:web:443dea65019c7f380b4a74',
             measurementId: "G-JSJEG57E3C"
             // there could be other properties depending on the project
         },
+        admin: {
+            serviceAccount: './serviceAccountKey.json',
+        }
     }
 })

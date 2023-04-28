@@ -2,7 +2,6 @@
 
 import { getAuth, signOut } from "firebase/auth";
 
-const auth = getAuth();
 
 
 const router = useRouter()
@@ -10,7 +9,7 @@ const route = useRoute()
 const user = useCurrentUser()
 
 function logOut(){
-    signOut(auth).then(() => {
+    signOut(getAuth()).then(() => {
         // Sign-out successful.
     }).catch((error) => {
         // An error happened.
@@ -39,9 +38,7 @@ useHead({
                     <NuxtLink to="/" style="display:block;"><img src="/logo2.svg" alt="" height="40" style="display:block;"></NuxtLink>  
 
                     <div>
-                        <v-btn  v-for="link in links" :key="link" variant="text" theme="dark">
-                            {{ link }}
-                        </v-btn>
+
 
                         <v-btn v-if="user" variant="plain" @click="router.push('/')" theme="dark" color="secondary">Dashboard</v-btn>
                         <v-btn v-if="user" variant="plain" @click="logOut" theme="dark" color="secondary">Log Out</v-btn>
@@ -65,13 +62,3 @@ useHead({
         </v-main>
     </v-app>
 </template>
-
-<script>
-export default {
-    data: () => ({
-        links: [
-            
-        ],
-    }),
-}
-</script>

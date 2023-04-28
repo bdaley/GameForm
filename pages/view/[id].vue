@@ -2,11 +2,13 @@
 import QRCode from 'qrcode'
 
 import { collectionGroup, query, where, limit, getDocs, getDoc, FieldPath, documentId } from "firebase/firestore";
-
+import { getRequestURL, getRequestHost, getRequestProtocol } from 'h3'
 
 const router = useRouter()
 const route = useRoute()
 const user = useCurrentUser()
+const req = useRequestEvent()
+// const headers = useRequestHeaders()
 
 const id = route.params.id
 const qrcode = ref('')
@@ -19,8 +21,9 @@ const html = ref('')
 const db = useFirestore()
 
 
+
 function currentURL(){
-    return document.URL
+    return (typeof document !== 'undefined') ? document.URL : getRequestURL(req).href
 }
 
 async function copyURL(){
@@ -46,7 +49,9 @@ function updateHTML(){
 }
 
 function getOEmbedURL(){
-    return `https://getgameform.com/api?format=json&id=${id}&url=${currentURL()}`
+    if(process.server){
+        return `${getRequestProtocol(req)}://${getRequestHost(req)}/oembed?format=json&id=${id}&url=${currentURL()}`
+    }
 }
 
 
@@ -65,17 +70,18 @@ onMounted(async () => {
     })
 })
 
+if(process.server){
+    useHead({
 
-useHead({
-
-    link: [
-        {
-            rel: 'alternate',
-            type: 'application/json+oembed',
-            href: getOEmbedURL()
-        }
-    ]
-})
+        link: [
+            {
+                rel: 'alternate',
+                type: 'application/json+oembed',
+                href: getOEmbedURL()
+            }
+        ]
+    })
+}
 
 </script>
 
@@ -111,7 +117,7 @@ useHead({
 
                         >{{ currentURL() }}</v-text-field>
                     
-                        <p><small><a :href="getOEmbedURL()" target="_blank">oEmbed Provider URL</a></small></p>
+                        <!-- <p><small><a :href="oembedURL" target="_blank">oEmbed Provider URL</a></small></p> -->
 
                     </v-expansion-panel-text>
                 </v-expansion-panel>
@@ -120,7 +126,7 @@ useHead({
                         QR Code
                     </v-expansion-panel-title>
                     <v-expansion-panel-text>
-                        <img :src="qrcode" alt="QR Code for this Assessment">
+                        <img :src="qrcode" alt="QR Code for this Assessment" width="300" height="300">
                     </v-expansion-panel-text>
                 </v-expansion-panel>  
                 
@@ -174,3 +180,7 @@ useHead({
 <style>
 
 </style>
+<script>
+
+console.log("Where is this running?")
+</script>

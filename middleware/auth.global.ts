@@ -2,10 +2,9 @@
 export default defineNuxtRouteMiddleware(async (to, from) => {
     const user = await getCurrentUser()
 
-    console.log(to, from)
+    // console.log(to, from)
 
     // redirect the user to the login page
-    console.log(to)
     if (!user && to.name !== 'login' && to.name !== 'view-id') {
         return navigateTo({
             path: '/login',
