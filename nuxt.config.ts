@@ -64,14 +64,16 @@ export default defineNuxtConfig({
     //https://nuxt.com/docs/api/configuration/nuxt-config#hooks
     hooks: {
         build:{
-            before(builder): void {
+            before(builder){
                 console.log('Writing SA')
                 const buff = Buffer.from(process.env.SERVICE_ACCOUNT, 'base64')
                 const decoded = buff.toString('utf-8')
 
                 // console.log(path.normalize('./serviceAccountKey.json'))
 
-                fs.writeFileSync(sa, decoded)                
+                fs.writeFile(sa, decoded, (err, data)=>{
+                    console.log(`File written: ${sa}`)
+                })
             }
         }
     }
