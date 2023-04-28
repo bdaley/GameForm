@@ -1,4 +1,8 @@
 import fs from 'node:fs'
+import path from 'node:path'
+
+const sa = path.resolve(__dirname, 'serviceAccountKey.json')
+
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -54,7 +58,7 @@ export default defineNuxtConfig({
             // there could be other properties depending on the project
         },
         admin: {
-            serviceAccount: './serviceAccountKey.json',
+            serviceAccount: sa,
         }
     },
     //https://nuxt.com/docs/api/configuration/nuxt-config#hooks
@@ -65,7 +69,9 @@ export default defineNuxtConfig({
                 const buff = Buffer.from(process.env.SERVICE_ACCOUNT, 'base64')
                 const decoded = buff.toString('utf-8')
 
-                fs.writeFileSync('./serviceAccountKey.json', decoded)                
+                // console.log(path.normalize('./serviceAccountKey.json'))
+
+                fs.writeFileSync(sa, decoded)                
             }
         }
     }
