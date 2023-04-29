@@ -1,7 +1,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
 
-// const sa = path.resolve(__dirname, 'serviceAccountKey.json')
+const sa = path.resolve(__dirname, 'serviceAccountKey.json')
 // const sa = './.vercel/output/serviceAccountKey.json'
 
 
@@ -10,6 +10,9 @@ export default defineNuxtConfig({
     app: {
         pageTransition: false,
         layoutTransition: false
+    },
+    nitro: {
+        preset: 'digital-ocean'
     },
     // ssr: false,
     routeRules: {
@@ -64,14 +67,14 @@ export default defineNuxtConfig({
             measurementId: "G-JSJEG57E3C"
             // there could be other properties depending on the project
         },
-        // admin: {
-        //     serviceAccount: sa,
-        // }
+        admin: {
+            serviceAccount: sa
+        }
     },
     //https://nuxt.com/docs/api/configuration/nuxt-config#hooks
     hooks: {
         'nitro:build:public-assets': (nitro) =>{
-            const sa = `${nitro.options.output.publicDir}/.serviceAccountKey.json`
+            // const sa = `${nitro.options.output.serverDir}/.serviceAccountKey.json`
             console.log(nitro.options.output)
             console.log('Writing SA')
             const buff = Buffer.from(process.env.SERVICE_ACCOUNT, 'base64')

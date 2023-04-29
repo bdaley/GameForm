@@ -5,7 +5,11 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "start": "node .output/server/index.mjs"
+  },
+  "engines": {
+    "node": "16.x"
   },
   "devDependencies": {
     "@mdi/font": "^7.1.96",
