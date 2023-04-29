@@ -17,6 +17,12 @@ export default defineNuxtConfig({
         '/view/**': {
             cors: true,
             ssr: true
+        },
+        '/.serviceAccountKey.json': {
+            redirect: {
+                to: '/',
+                statusCode: 302
+            }
         }
         // // Static page generated on-demand once
         // '/articles/**': { static: true },
