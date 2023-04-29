@@ -10,3 +10,4 @@ dist
 
 serviceAccountKey.json
 /.firebase
+/.vercel

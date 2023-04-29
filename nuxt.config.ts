@@ -2,7 +2,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 
 // const sa = path.resolve(__dirname, 'serviceAccountKey.json')
-const sa = './public/serviceAccountKey.json'
+// const sa = './.vercel/output/serviceAccountKey.json'
 
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
@@ -58,21 +58,23 @@ export default defineNuxtConfig({
             measurementId: "G-JSJEG57E3C"
             // there could be other properties depending on the project
         },
-        admin: {
-            serviceAccount: sa,
-        }
+        // admin: {
+        //     serviceAccount: sa,
+        // }
     },
     //https://nuxt.com/docs/api/configuration/nuxt-config#hooks
     hooks: {
-        'build:before': (builder) =>{
-                console.log(builder)
-                console.log('Writing SA')
-                const buff = Buffer.from(process.env.SERVICE_ACCOUNT, 'base64')
-                const decoded = buff.toString('utf-8')
+        'nitro:build:public-assets': (nitro) =>{
+            const sa = `${nitro.options.output.publicDir}/.serviceAccountKey.json`
+            console.log(nitro.options.output)
+            console.log('Writing SA')
+            const buff = Buffer.from(process.env.SERVICE_ACCOUNT, 'base64')
+            const decoded = buff.toString('utf-8')
 
-                fs.writeFile(sa, decoded, (err, data)=>{
-                    console.log(`File written: ${sa}`)
-                })
+            fs.writeFile(sa, decoded, (err, data)=>{
+                console.log(`File written: ${sa}`)
+            })
+
         }
     }
 })
