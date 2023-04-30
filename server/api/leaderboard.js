@@ -28,7 +28,7 @@ export default defineEventHandler(async (event) => {
         .where("assessment_id", "==", id)
         .where("host", "==", host)
         .where("path", "==", path)
-        .orderBy("submitted", "desc")
+        .orderBy("submitted", "asc")
 
     const querySnapshot = await q.get();
     querySnapshot.forEach((doc) => {
