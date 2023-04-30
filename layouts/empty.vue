@@ -4,7 +4,7 @@ useHead({
     title: 'GameForm - The Fun Formative Assessment',
     script: [
         {
-            src: 'https://cdn.jsdelivr.net/gh/bdaley/gf-web-components/dist/assets/js/gf-trivia.js',
+            src: 'https://cdn.jsdelivr.net/gh/bdaley/gf-web-components@v1.0.0/dist/assets/js/gf-trivia.js',
             async: true,
             id: 'gf-trivia-script'
         }
