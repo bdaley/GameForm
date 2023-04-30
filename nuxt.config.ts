@@ -2,7 +2,6 @@ import fs from 'node:fs'
 import path from 'node:path'
 
 const sa = path.resolve(__dirname, 'serviceAccountKey.json')
-// const sa = './.vercel/output/serviceAccountKey.json'
 
 
 // https://nuxt.com/docs/api/configuration/nuxt-config

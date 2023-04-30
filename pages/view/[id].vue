@@ -117,7 +117,7 @@ if(process.server){
 
                         >{{ currentURL() }}</v-text-field>
                     
-                        <!-- <p><small><a :href="oembedURL" target="_blank">oEmbed Provider URL</a></small></p> -->
+                        <p><small><a :href="`/oembed?format=json&id=${id}&url=${currentURL()}`" target="_blank">oEmbed Provider URL</a></small></p>
 
                     </v-expansion-panel-text>
                 </v-expansion-panel>
