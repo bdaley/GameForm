@@ -19,12 +19,6 @@ export default defineNuxtConfig({
         '/view/**': {
             cors: true,
             ssr: true
-        },
-        '/.serviceAccountKey.json': {
-            redirect: {
-                to: '/',
-                statusCode: 302
-            }
         }
         // // Static page generated on-demand once
         // '/articles/**': { static: true },
@@ -74,7 +68,7 @@ export default defineNuxtConfig({
     hooks: {
         'nitro:build:public-assets': (nitro) =>{
             // const sa = `${nitro.options.output.serverDir}/.serviceAccountKey.json`
-            console.log(nitro.options.output)
+            // console.log(nitro.options.output)
             console.log('Writing SA')
             const buff = Buffer.from(process.env.SERVICE_ACCOUNT, 'base64')
             const decoded = buff.toString('utf-8')

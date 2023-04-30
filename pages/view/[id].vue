@@ -50,7 +50,7 @@ function updateHTML(){
 
 function getOEmbedURL(){
     if(process.server){
-        return `${getRequestProtocol(req)}://${getRequestHost(req)}/oembed?format=json&id=${id}&url=${currentURL()}`
+        return `${getRequestProtocol(req)}://${getRequestHost(req)}/api/oembed?format=json&id=${id}&url=${currentURL()}`
     }
 }
 
@@ -117,7 +117,7 @@ if(process.server){
 
                         >{{ currentURL() }}</v-text-field>
                     
-                        <p><small><a :href="`/oembed?format=json&id=${id}&url=${currentURL()}`" target="_blank">oEmbed Provider URL</a></small></p>
+                        <p><small><a :href="`/api/oembed?format=json&id=${id}&url=${currentURL()}`" target="_blank">oEmbed Provider URL</a></small></p>
 
                     </v-expansion-panel-text>
                 </v-expansion-panel>
