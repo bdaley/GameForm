@@ -24,6 +24,9 @@ export default defineNuxtConfig({
             cors: true,
             ssr: true
         },
+        '/api/**': {
+            cors:true
+        }
         // // Static page generated on-demand once
         // '/articles/**': { static: true },
         // // Set custom headers matching paths
