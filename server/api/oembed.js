@@ -8,7 +8,7 @@ const firebaseApp = initializeApp({
     // credential: appConfig.firebaseAdmin.serviceAccount,
     credential: applicationDefault(),
     databaseURL: 'https://gameform.firebaseio.com'
-}, 'oembed')
+})
 
 
 

@@ -19,7 +19,11 @@ export default defineNuxtConfig({
         '/view/**': {
             cors: true,
             ssr: true
-        }
+        }, 
+        '/iframe/**': {
+            cors: true,
+            ssr: true
+        },
         // // Static page generated on-demand once
         // '/articles/**': { static: true },
         // // Set custom headers matching paths

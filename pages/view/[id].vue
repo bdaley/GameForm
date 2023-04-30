@@ -16,6 +16,7 @@ let assessment = ref({})
 const notification = ref(false)
 let notificationText = ref('')
 const html = ref('')
+const iframe = ref(`<iframe src="${currentURL().replace('view', 'iframe')}" frameborder="0" style="width:100%; min-height:550px; overflow:hidden" scrolling="no" ></iframe>`)
 
 
 const db = useFirestore()
@@ -34,6 +35,12 @@ async function copyURL(){
 
 async function copyHTML(){
     await navigator.clipboard.writeText(html.value)
+    showNotification('Successfully Copied to Clipboard!')
+}
+
+
+async function copyIframe() {
+    await navigator.clipboard.writeText(iframe.value)
     showNotification('Successfully Copied to Clipboard!')
 }
 
@@ -65,7 +72,7 @@ onMounted(async () => {
     console.log(assessment)
 
     // Set QR Code
-    QRCode.toDataURL(currentURL(), {scale: 8}).then(url => {
+    QRCode.toDataURL(currentURL().replace('view', 'iframe'), {scale: 8}).then(url => {
         qrcode.value = url
     })
 })
@@ -149,7 +156,28 @@ if(process.server){
                         >                  
                         </v-textarea>
                     </v-expansion-panel-text>
+                </v-expansion-panel>  
+                <v-expansion-panel>
+                    <v-expansion-panel-title @click="updateHTML">
+                        Embed Code (iframe)
+                    </v-expansion-panel-title>
+                    <v-expansion-panel-text>
+                        <v-textarea 
+                            label="HTML Code" 
+                            variant="outlined"
+                            append-inner-icon="mdi-content-copy"
+                            single-line
+                            readonly
+                            hide-details
+                            @click:append-inner="copyIframe"
+                            v-model="iframe"
+                            auto-grow
+                            style="font-family: monospace; "
+                        >                  
+                        </v-textarea>
+                    </v-expansion-panel-text>
                 </v-expansion-panel>                 
+
         </v-expansion-panels>
         </v-col>
 
