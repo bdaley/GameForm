@@ -44,13 +44,6 @@ onMounted(async () => {
     const querySnapshot = query(collectionGroup(db, 'assessments'), where("id", '==', id), limit(1));
 
     assessment.value = (await getDocs(querySnapshot)).docs[0].data()
-
-    console.log(assessment)
-
-    // Set QR Code
-    QRCode.toDataURL(currentURL(), {scale: 8}).then(url => {
-        qrcode.value = url
-    })
 })
 
 if(process.server){
